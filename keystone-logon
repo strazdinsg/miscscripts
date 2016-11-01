@@ -1,29 +1,18 @@
 #!/bin/bash
-OS_AUTH_URL=http://172.16.0.102:5000/v3
-OS_USER_DOMAIN_NAME="NTNU"
-#OS_USERNAME=$USER
-OS_REGION_NAME="SkyHiGh"
-OS_IDENTITY_API_VERSION=3
-ENVIRONMENT="SkyLow"
+DBHOST="<IP>"
+DBPORT="<PORT>"
+DBUSER="<DB-USERNAME>"
+export MYSQL_PWD="<DB-PASSWORD>"    # Using this to avoid warnings in the terminal
+VIEWNAME="v_project_roles_per_user" 
+VIEWCOLUMN="project_roles"
+OS_USERNAME=${USER}
 
-if [ "$1" == "--promptuser" ]; then
-	echo -n "NTNU Username: "
-	read -r OS_USERNAME
-else
-	OS_USERNAME=$USER
-fi
+echo "Checking if ${OS_USERNAME} has access to any projects in OpenStack..."
+projects=$(mysql -N -s -r -h ${DBHOST} -P ${DBPORT} -u${DBUSER} -e "SELECT ${VIEWCOLUMN} from keystone.${VIEWNAME} WHERE username = '${OS_USERNAME}'")
 
-echo "Welcome to ${ENVIRONMENT} access VM. When prompted, please enter your NTNU passowrd"
-
-openstack --os-auth-url $OS_AUTH_URL \
-          --os-region-name $OS_REGION_NAME \
-          --os-user-domain-name $OS_USER_DOMAIN_NAME \
-          --os-username $OS_USERNAME \
-          --os-identity-api-version $OS_IDENTITY_API_VERSION \
-          token issue
-
-if [ $? -eq 0 ]; then
+if [ ! -z "$projects" ] && [ $projects -gt 0 ]; then
 	echo "Access granted - you have permissions on one or more projects in OpenStack - have fun"
+	/bin/bash
 else
 	echo "Access denied - BYE BYE"
 fi
