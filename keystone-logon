@@ -2,13 +2,13 @@
 DBHOST="<IP>"
 DBPORT="<PORT>"
 DBUSER="<DB-USERNAME>"
-export MYSQL_PWD="<DB-PASSWORD>"    # Using this to avoid warnings in the terminal
+DBPASSWORD="<DB-PASSWORD>"
 VIEWNAME="v_project_roles_per_user" 
 VIEWCOLUMN="project_roles"
 OS_USERNAME=${USER}
 
 echo "Checking if ${OS_USERNAME} has access to any projects in OpenStack..."
-projects=$(mysql -N -s -r -h ${DBHOST} -P ${DBPORT} -u${DBUSER} -e "SELECT ${VIEWCOLUMN} from keystone.${VIEWNAME} WHERE username = '${OS_USERNAME}'")
+projects=$(mysql -N -s -r -h ${DBHOST} -P ${DBPORT} -u${DBUSER} -p${DBPASSWORD} -e "SELECT ${VIEWCOLUMN} from keystone.${VIEWNAME} WHERE username = '${OS_USERNAME}'" 2> /dev/null)
 
 if [ ! -z "$projects" ] && [ $projects -gt 0 ]; then
 	echo "Access granted - you have permissions on one or more projects in OpenStack - have fun"
