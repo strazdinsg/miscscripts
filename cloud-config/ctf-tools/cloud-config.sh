@@ -18,4 +18,4 @@ DATA="{\"hostname\":\"$HOSTNAME ($IP)\", \"flag\":\"$FLAG\"}"
 echo $FLAG > /opt/flag.txt
 chmod 755 /opt/flag.txt
 
-curl -d "$DATA" -H "Content-Type: application/json" -X POST http://callbackserver.foo:0000
+curl -d "$DATA" -H "Content-Type: application/json" -X POST http://callbackserver.foo:8000
