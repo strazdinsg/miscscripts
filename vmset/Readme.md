@@ -109,6 +109,10 @@ ssh-key-KURS002-serverB
 ssh-key-KURS002-serverB.pub
 ```
 
+When the servers are booted the first time they wil automatically install all
+missing updates and then reboot. So, if you log into them quickly after creation
+(within 5-minutes -ish) you should not be supprised if the VM suddenly reboots.
+
 ### The LDAP-Based approach 
 
 At the LDAP-based approach each VM will be created with the required
@@ -158,6 +162,10 @@ At this point two servers are created, and will soon be ready:
 
  - KURS001-group1 at 10.212.169.15, where usera and userb is allowed to log in
  - KURS001-group2 at 10.212.168.74, where userc is allowed to log in
+
+When the servers are booted the first time they wil automatically install all
+missing updates and then reboot. So, if you log into them quickly after creation
+(within 5-minutes -ish) you should not be supprised if the VM suddenly reboots.
 
 ## Deleting the VM's
 
