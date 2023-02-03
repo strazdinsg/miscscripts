@@ -1,5 +1,5 @@
 #cloud-config
-#package_upgrade: true
+package_upgrade: true
 timezone: "Europe/Oslo"
 ssh_pwauth: true
 packages:
@@ -36,7 +36,6 @@ users:
     gecos: Lokal adminbruker 
     shell: /bin/bash
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGOUa4umWBvM+++eVKXHs4CDrir+aWqrcMtLkPhQR1UF user@host
       - ADMINKEY
  
 runcmd:

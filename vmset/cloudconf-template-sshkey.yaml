@@ -1,13 +1,14 @@
 #cloud-config
-#package_upgrade: true
+package_upgrade: true
 timezone: "Europe/Oslo"
  
 users:
   - name: administrator
     gecos: Lokal adminbruker 
+    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGOUa4umWBvM+++eVKXHs4CDrir+aWqrcMtLkPhQR1UF user@host
       - ADMINKEY
   - name: user
     gecos: Lokal bruker 
