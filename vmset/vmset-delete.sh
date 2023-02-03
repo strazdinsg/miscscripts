@@ -9,7 +9,7 @@ fi
 
 coursename=$1
 
-for server in $(openstack server list --tags $coursename -f value -c ID); do
+for server in $(openstack server list --os-compute-api-version 2.26 --tags $coursename -f value -c ID); do
   echo "Deleting the server with an ID of $server"
   openstack server delete $server
 done
