@@ -58,7 +58,8 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     echo "Creating the server $hostname"
     serverid=$(openstack server create --image $image --network $network \
         --flavor $flavor --security-group $secgroup --user-data $cloudconfig \
-        --tag $coursename --tag VM-Set --wait $hostname -f value -c id)
+        --os-compute-api-version 2.52 --tag $coursename --tag VM-Set --wait \
+        $hostname -f value -c id)
     
     echo "Reserving a floating-IP for $hostname from $externalnet"
     floatingIP=$(openstack floating ip create $externalnet \
