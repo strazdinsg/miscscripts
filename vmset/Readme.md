@@ -25,7 +25,7 @@ following information:
    allowed to/from the VMs.
 
 Make sure to have an openstack-client installed on your terminal, and verify
-that it works by using a command like 'openstack network list'.
+that it works by using a command like `openstack network list`.
 
 ## Creating the VM's
 
@@ -48,10 +48,10 @@ deletion (see [vmset-delete.sh](vmset-delete.sh)).
 If you want VMs that is not authenticating using NTNU users we recommend to use
 SSH-keys. The script [vmset-create-sshkey.sh](vmset-create-sshkey.sh) creates
 VMs with two users: 'administrator' and 'user', where the administrator account
-get the same ssh-key for all machines and the user-account get individual keys.o
+gets the same ssh-key for all machines and the user-accounts get individual keys.
 
 When it comes to who should create the ssh-keypairs, the most secure way is to
-have the users of the VM's to create the keypairs, and then send inn the public
+have the users of the VM's to create the key pairs, and then send in the public
 part to the course-responsible which in the end creates all the VMs. This
 ensures that the private-keys are not needed to be sent anywhere. The easier
 alternative is to generate a keypair per VM, and distribute the private-keys to
@@ -111,16 +111,16 @@ ssh-key-KURS002-serverB.pub
 
 When the servers are booted the first time they wil automatically install all
 missing updates and then reboot. So, if you log into them quickly after creation
-(within 5-minutes -ish) you should not be supprised if the VM suddenly reboots.
+(within 5-minutes -ish) you should not be surprised if the VM suddenly reboots.
 
 ### The LDAP-Based approach 
 
 At the LDAP-based approach each VM will be created with the required
-configuration to allow NTNU-users to log in. In addition an 'administrator'
-accound is created which uses ssh-keys to authenticate, to allow a 'backdoor' in
+configuration to allow NTNU-users to log in. In addition, an 'administrator'
+account is created which uses ssh-keys to authenticate, to allow a 'backdoor' in
 for the course-responsible(s).
 
-The admin-key is set in the script, so change the line adminkey=... to whatever
+The admin-key is set in the script, so change the line `adminkey=...` to whatever
 key you would like to use for this purpose.
 
 Create a file which lists the machines you want, and which ntnu usernames should
@@ -165,7 +165,7 @@ At this point two servers are created, and will soon be ready:
 
 When the servers are booted the first time they wil automatically install all
 missing updates and then reboot. So, if you log into them quickly after creation
-(within 5-minutes -ish) you should not be supprised if the VM suddenly reboots.
+(within 5-minutes -ish) you should not be surprised if the VM suddenly reboots.
 
 ## Deleting the VM's
 
