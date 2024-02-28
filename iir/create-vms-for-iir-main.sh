@@ -33,4 +33,4 @@ ADMIN_KEY=${IIR_TEACHING_ADMIN_PUBLIC_KEY}
 echo "creating VMs for project $COURSE_CODE, reading users from file $CSV_FILE ..."
 echo
 
-./vmset-create-ldap.sh ${COURSE_CODE} ${IMAGE_ID} ${FLAVOR} ${NETWORK_ID} ${EXTERNAL_NETWORK} ${SECURITY_GROUP_ID} ${CSV_FILE} ${ADMIN_KEY}
+./vmset-create-ldap.sh ${COURSE_CODE} ${IMAGE_ID} ${FLAVOR} ${NETWORK_ID} ${EXTERNAL_NETWORK} ${SECURITY_GROUP_ID} ${CSV_FILE} "${ADMIN_KEY}"
